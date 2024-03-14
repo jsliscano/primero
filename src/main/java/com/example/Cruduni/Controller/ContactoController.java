@@ -11,7 +11,6 @@ import java.util.Optional;
 @RequestMapping(path = "api/v1/contacto")
 
     public class ContactoController {
-
         @Autowired
         private ContactoService contactoService;
 
