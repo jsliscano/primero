@@ -1,5 +1,6 @@
 package com.example.Cruduni.Service.Impl;
 
+import com.example.Cruduni.Dto.DatosGenealeDto;
 import com.example.Cruduni.Dto.EstudianteDto;
 import com.example.Cruduni.Dto.ResponseDtoGenerico;
 import com.example.Cruduni.Entity.EntityContacto;
@@ -18,6 +19,7 @@ import java.util.Optional;
 
 @Service
 public class EstudianteService implements EstudianteServiceI {
+
     @Autowired
     EstudianteRepository estudianteRepository;
 
@@ -76,5 +78,11 @@ public class EstudianteService implements EstudianteServiceI {
         }catch (Exception e){
             return null;
         }
+    }
+
+    public DatosGenealeDto responseDto() {
+        Optional<EntityEstudiante> entityEstudiante = estudianteRepository.findById(1L);
+        Optional<>
+        return null;
     }
 }
