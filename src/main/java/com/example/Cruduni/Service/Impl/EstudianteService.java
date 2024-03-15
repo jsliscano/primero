@@ -10,6 +10,7 @@ import com.example.Cruduni.Repository.EstudianteRepository;
 import com.example.Cruduni.Service.EstudianteServiceI;
 import com.example.Cruduni.contantes.Constantes;
 import com.example.Cruduni.mapper.EstudianteMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class EstudianteService implements EstudianteServiceI {
 
     @Autowired
@@ -25,6 +27,8 @@ public class EstudianteService implements EstudianteServiceI {
 
     @Autowired
     ContactoRepository contactoRepository;
+
+    EstudianteMapper mapper;
 
     public List<EntityEstudiante> getEstudiante() {
         return estudianteRepository.findAll();
@@ -67,7 +71,7 @@ public class EstudianteService implements EstudianteServiceI {
 
     @Override
     public ResponseEntity<String> delete(Long id) {
-        try{
+        try {
             Optional<EntityEstudiante> estudiante = estudianteRepository.findById(id);
             if (estudiante.isPresent()) {
                 estudianteRepository.deleteById(id);
@@ -75,14 +79,30 @@ public class EstudianteService implements EstudianteServiceI {
             } else {
                 return ResponseEntity.ok(Constantes.respuestaFallida);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
 
     public DatosGenealeDto responseDto() {
         Optional<EntityEstudiante> entityEstudiante = estudianteRepository.findById(1L);
-        Optional<>
         return null;
+    }
+
+    public EstudianteDto retornarEstu(Long id) {
+
+        EntityEstudiante entidad = estudianteRepository.getReferenceById(1L);
+
+        EstudianteDto dto = mapper.dtoAentidadv2(entidad);
+
+        return dto;
+
+
+    }
+
+
+    public void guardar (EstudianteDto estudiantredto){
+        EntityEstudiante estudiante = mapper.dtoAEntidad(estudiantredto);
+        estudianteRepository.save(estudiante);
     }
 }
