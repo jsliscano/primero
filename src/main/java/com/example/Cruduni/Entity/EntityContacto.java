@@ -20,5 +20,6 @@ public class EntityContacto {
     @Column(name = "Direccion", nullable = false)
     private String direccion;
 
-
+    @Column(name = "gmail", nullable = false)
+    private String gmail;
 }
