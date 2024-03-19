@@ -3,7 +3,6 @@ package com.example.Cruduni.Service.Impl;
 import com.example.Cruduni.Dto.DatosGenealeDto;
 import com.example.Cruduni.Dto.EstudianteDto;
 import com.example.Cruduni.Dto.ResponseDtoGenerico;
-import com.example.Cruduni.Entity.EntityContacto;
 import com.example.Cruduni.Entity.EntityEstudiante;
 import com.example.Cruduni.Repository.ContactoRepository;
 import com.example.Cruduni.Repository.EstudianteRepository;
@@ -89,7 +88,7 @@ public class EstudianteService implements EstudianteServiceI {
         return null;
     }
 
-    public EstudianteDto retornarEstu(Long id) {
+    public EstudianteDto retornarEstudiante(Long id) {
 
         EntityEstudiante entidad = estudianteRepository.getReferenceById(1L);
 
